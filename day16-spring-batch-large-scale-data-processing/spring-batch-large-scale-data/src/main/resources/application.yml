@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spring-batch-large-scale-data
+
+  datasource:
+    source:
+      url: jdbc:postgresql://localhost:5432/legacy_db
+      username: ${SOURCE_DB_USERNAME:postgres}
+      password: ${SOURCE_DB_PASSWORD:postgres}
+      driver-class-name: org.postgresql.Driver
+
+    target:
+      url: jdbc:mysql://localhost:3306/migration_db?useSSL=false&serverTimezone=UTC
+      username: ${TARGET_DB_USERNAME:root}
+      password: ${TARGET_DB_PASSWORD:root}
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: always
+
+server:
+  port: 8080
+
+migration:
+  batch:
+    chunk-size: 1000
+  schedule:
+    cron: "0 0 0 * * *"
+
+logging:
+  level:
+    org.springframework.batch: INFO

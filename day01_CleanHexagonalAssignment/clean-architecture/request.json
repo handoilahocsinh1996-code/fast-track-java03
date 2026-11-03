@@ -1,0 +1,10 @@
+{
+  "customerId": "customer-001",
+  "items": [
+    {
+      "productId": "product-001",
+      "quantity": 2,
+      "unitPrice": 100000
+    }
+  ]
+}

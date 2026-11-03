@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: inventory-concurrency
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/inventory_concurrency
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        envers:
+          audit_table_suffix: _AUD
+
+server:
+  port: 8080
